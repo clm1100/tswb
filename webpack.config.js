@@ -1,13 +1,20 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const template = require('art-template');
-console.log(template);
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 module.exports = {
-  entry: './app.js',
+  entry: {
+      app:'./app.js',
+      app2:'./app2.js',
+      vendor:['jquery']
+  },
   output: {
     path: __dirname + '/dist',
-    filename: 'index_bundle.js'
+    filename: '[name]_bundle.js'
   },
   plugins: [
-    new HtmlWebpackPlugin()
+    new HtmlWebpackPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+        name:"vendor",
+        filename:'abc.js'
+    })
   ]
 }
