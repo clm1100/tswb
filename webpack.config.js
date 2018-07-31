@@ -13,8 +13,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
-        name:"vendor",
-        filename:'abc.js'
+        name:["vendor","runtime"],
+        filename:'[name].js'
     })
   ]
 }
