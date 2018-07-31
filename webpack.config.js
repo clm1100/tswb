@@ -14,7 +14,13 @@ module.exports = {
     new HtmlWebpackPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
         name:["vendor","runtime"],
-        filename:'[name].js'
+        filename:'[name].js',
+        minChunks:Infinity
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+        name:'common',
+        filename:'[name].js',
+        chunks:['app','app2']
     })
   ]
 }
